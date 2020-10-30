@@ -1,0 +1,61 @@
+# Include your customized HAL commands here
+# The commands in this file are run after the AXIS GUI (including PyVCP panel) starts
+
+# set up the rapid to home button
+ net remote-rapid-to-home     halui.mdi-command-00    <= pyvcp.rapid-to-home
+ net remote-rapid-to-home-xy  halui.mdi-command-01    <= pyvcp.rapid-to-home-xy
+ net remote-go-away-xyz       halui.mdi-command-02    <= pyvcp.go-away-xyz
+ net remote-recenter          halui.mdi-command-03    <= pyvcp.recenter
+ net remote-circle-center     halui.mdi-command-04    <= pyvcp.find-circle-center
+ net remote-rect-center       halui.mdi-command-05    <= pyvcp.find-rectangle-center
+ net center-here-xyz          halui.mdi-command-06    <= pyvcp.center-here-xyz
+ net set_z                    halui.mdi-command-07    <= pyvcp.set_z
+ net probe                    parport.0.pin-11-in-not <= pyvcp.probe
+
+# set up spindle speed control
+ net  spindle-cmd-rpm-abs    => pyvcp.spindle-speed
+ sets spindle-at-speed true
+
+# 3D probe
+ net 3D_probe arduino.probe_3d <= pyvcp.probe_3d
+
+
+# Temperature
+ #net water_temp arduino.temperature => pyvcp.temperature 
+
+# Timer 
+ loadrt time
+ loadrt not
+ addf time.0 servo-thread
+ addf  not.0 servo-thread
+ net prog-running    not.0.in           <= halui.program.is-idle
+ net cycle-timer     time.0.start       <= not.0.out
+ net cycle-seconds   pyvcp.time-seconds <= time.0.seconds
+ net cycle-minutes   pyvcp.time-minutes <= time.0.minutes
+ net cycle-hours     pyvcp.time-hours   <= time.0.hours
+
+#Time estimantion 
+ #net time-minutes-sim pyvcp.time-minutes-sim <= axisui.cut_time
+
+#Gcode percent
+# net gcode_percent cpins.gcode_percent  => pyvcp.gcode_percent
+
+#Z offset
+ loadrt updown names=zctr
+ addf   zctr   servo-thread
+
+ net  E:z-plus   <= pyvcp.z-plus             => zctr.countup
+ net  E:z-minus  <= pyvcp.z-minus            => zctr.countdown
+ net  E:z-counts <= zctr.count               => axis.z.eoffset-counts
+ net  E:z-scale  <= pyvcp.z-scale            => axis.z.eoffset-scale
+ net  E:z-offset <= axis.z.eoffset           => pyvcp.z-offset-f
+ net  E:limited  <= motion.eoffset-limited   => pyvcp.limited
+ net  E:active   <= motion.eoffset-active    => pyvcp.eoffset-active
+ net  E:enable   <= halui.joint.2.is-homed   => axis.z.eoffset-enable
+# net  E:paused   <= halui.program.is-paused  => axis.z.eoffset-enable
+ net  E:enable                               => pyvcp.enable
+
+ net  E:clearall <= pyvcp.clearall
+ net  E:clearall => axis.x.eoffset-clear
+ net  E:clearall => axis.y.eoffset-clear
+ net  E:clearall => axis.z.eoffset-clear

@@ -1,0 +1,334 @@
+<pyvcp>
+  <vbox>
+   <relief>RIDGE</relief>
+   <bd>4</bd>
+    <label>
+     <text>"Spindle Speed:"</text>
+     <font>("Helvetica",9)</font>
+    </label>
+    <bar>
+     <halpin>"spindle-speed"</halpin>
+     <max_>24000</max_>
+    </bar>
+  </vbox>
+
+ <button>
+     <halpin>"center-here-xyz"</halpin>
+     <text>"SET G54 Center XYZ"</text>
+     <font>('Fixed',10)</font>
+     <bg>"#7fdbb1"</bg>
+     <fg>"#000000"</fg>
+ </button>
+
+ <button>
+     <halpin>"rapid-to-home"</halpin>
+     <text>"GO Home XYZ"</text>
+     <font>('Fixed',9)</font>
+     <bg>"#ffc1c8"</bg>
+     <fg>"#000000"</fg>
+ </button>
+
+ <button>
+     <halpin>"rapid-to-home-xy"</halpin>
+     <text>"GO Home XY"</text>
+     <font>('Fixed',9)</font>
+     <bg>"#ffc1c8"</bg>
+     <fg>"#000000"</fg>
+ </button>
+
+ <button>
+     <halpin>"go-away-xyz"</halpin>
+     <text>"Free Area XYZ"</text>
+     <font>('Fixed',9)</font>
+     <bg>"#ffc1c8"</bg>
+     <fg>"#000000"</fg>
+ </button>
+
+ <button>
+     <halpin>"set_z"</halpin>
+     <text>"SET Z con Probe"</text>
+     <font>('Fixed',10)</font>
+     <bg>"#ff75b5"</bg>
+     <fg>"#000000"</fg>
+ </button>
+
+ <button>
+     <halpin>"recenter"</halpin>
+     <text>"Recenter XY"</text>
+     <font>('Fixed',9)</font>
+     <bg>"#c8ebf7"</bg>
+     <fg>"#000000"</fg>
+ </button>
+
+ <button>
+     <halpin>"find-circle-center"</halpin>
+     <text>"Find Circle Center"</text>
+     <font>('Fixed',9)</font>
+     <bg>"#c8ebf7"</bg>
+     <fg>"#000000"</fg>
+ </button>
+
+ <button>
+     <halpin>"find-rectangle-center"</halpin>
+     <text>"Find Rectangle Center"</text>
+     <font>('Fixed',9)</font>
+     <bg>"#c8ebf7"</bg>
+     <fg>"#000000"</fg>
+ </button>
+
+<vbox>
+ <label><pady>2</pady></label>
+</vbox>
+
+<hbox>
+    <relief>GROOVE</relief>
+    <bd>2</bd>
+    <label>
+        <text>"PROBE"</text>
+        <font>('Helvetica',13)</font>
+    </label>
+    <led>
+       <halpin>"probe"</halpin>
+       <size>23</size>
+       <on_color>"green"</on_color>
+       <off_color>"red"</off_color>
+     </led>
+
+     <checkbutton>
+        <halpin>"probe_3d"</halpin>
+        <text>"Probe 3D"</text>
+        <font>("Helvetica",10)</font>
+     </checkbutton>
+</hbox>
+
+<vbox>
+ <label><pady>2</pady></label>
+</vbox>
+
+<!-- <hbox>
+   <relief>GROOVE</relief>
+   <bd>4</bd>
+   <label>
+     <text>"Water Temp:"</text>
+     <font>("Helvetica",10)</font>
+   </label>
+   <number> 
+     <halpin>"temperature"</halpin>
+     <font>("Helvetica",12)</font>
+     <format>"3.1f"</format>
+   </number>
+  </hbox>-->
+
+<hbox>
+   <relief>GROOVE</relief>
+   <bd>2</bd>
+   <label>
+     <text>"Durata Taglio:"</text>
+     <font>("Helvetica",14)</font>
+   </label>
+   <u32>
+     <halpin>"time-hours"</halpin>
+     <font>("Helvetica",14)</font>
+     <format>"2d"</format>
+   </u32>
+   <label>
+     <text>":"</text>
+     <font>("Helvetica",14)</font>
+   </label>
+   <u32>
+     <halpin>"time-minutes"</halpin>
+     <font>("Helvetica",14)</font>
+     <format>"2d"</format>
+   </u32>
+   <label>
+     <text>":"</text>
+     <font>("Helvetica",14)</font>
+   </label>
+   <u32>
+     <halpin>"time-seconds"</halpin>
+     <font>("Helvetica",14)</font>
+     <format>"2d"</format>
+   </u32>
+</hbox> 
+
+<hbox>
+   <relief>GROOVE</relief>
+   <bd>2</bd>
+   <label>
+     <text>"Durata prevista:"</text>
+     <font>("Helvetica",14)</font>
+   </label>
+   <u32>
+     <halpin>"time-minutes-sim"</halpin>
+     <font>("Helvetica",14)</font>
+     <format>"3d"</format>
+   </u32>
+   <label>
+     <text>"min"</text>
+     <font>("Helvetica",14)</font>
+   </label>
+</hbox>
+
+<hbox>
+   <relief>GROOVE</relief>
+   <bd>2</bd>
+   <label>
+     <text>"Gcode progress:"</text>
+     <font>("Helvetica",14)</font>
+   </label>
+   <u32>
+     <halpin>"gcode_percent"</halpin>
+     <font>("Helvetica",14,"bold")</font>
+     <format>"2d"</format>
+   </u32>
+   <label>
+     <text>"%"</text>
+     <font>("Helvetica",14)</font>
+   </label>
+</hbox>
+
+<vbox>
+ <label><pady>2</pady></label>
+</vbox>
+
+<hbox>
+   <relief>GROOVE</relief>
+   <bd>2</bd>
+   <label>
+     <text>"Primo utensile:"</text>
+     <font>("Helvetica",14)</font>
+     <fg>"#162589"</fg>
+   </label>
+   <u32>
+     <halpin>"first-tool"</halpin>
+     <font>("Helvetica",14,"bold")</font>
+     <fg>"#630a3b"</fg>
+     <format>"2d"</format>
+   </u32>
+</hbox>
+
+ <vbox>
+  <label><pady>2</pady></label>
+ </vbox>
+
+<vbox>
+  <relief>RIDGE</relief>
+  <bd>4</bd>
+  <label>
+    <text>"Regolazione asse Z"</text>
+    <font>"bold"</font>
+  </label>
+  <vbox>
+    <relief>"sunken"</relief>
+    <bd>3</bd>
+    <hbox>
+      <label>
+        <padx>0</padx>
+        <font>"monospace"</font>
+      </label>
+        <led>
+        <halpin>"enable"</halpin>
+         <size>15</size>
+         <on_color>"springgreen"</on_color>
+         <off_color>"#d9d9d9"</off_color>
+       </led>
+       <label>
+         <text>" Regolazione Abilitata"</text>
+         <anchor>"w"</anchor>
+       </label>
+    </hbox>
+
+    <hbox>
+      <label>
+        <padx>0</padx>
+        <font>"monospace"</font>
+      </label>
+      <led>
+        <halpin>"limited"</halpin>
+          <size>15</size>
+          <on_color>"red"</on_color>
+          <off_color>"#d9d9d9"</off_color>
+      </led>
+      <label>
+        <text>" Limite"</text>
+        <anchor>"w"</anchor>
+      </label>
+    </hbox>
+
+    <hbox>
+      <label>
+        <padx>0</padx>
+        <font>"monospace"</font>
+      </label>
+        <led>
+        <halpin>"eoffset-active"</halpin>
+         <size>15</size>
+         <on_color>"gold"</on_color>
+         <off_color>"#d9d9d9"</off_color>
+       </led>
+       <label>
+         <text>" Regolazione attiva"</text>
+         <anchor>"w"</anchor>
+       </label>
+    </hbox>
+    <hbox>
+      <number>
+        <halpin>"z-offset-f"</halpin>
+        <format>"+8.2f"</format>
+        <width>"13"</width>
+        <bg>"black"</bg>
+        <fg>"gold"</fg>
+        <font>"bold"</font>
+      </number>
+      <label> 
+        <text>"mm"</text>
+        <font>"bold"</font>
+      </label>
+    </hbox>
+    <hbox>
+      <label>
+        <anchor>"w"</anchor>
+        <text>"Scala:"</text>
+        <font>"bold"</font>
+      </label>
+      <spinbox>
+        <halpin>"z-scale"</halpin>
+        <min_>0.05</min_>
+        <max_>1.00</max_>
+        <width>6</width>
+        <initval>0.05</initval>
+        <resolution>0.05</resolution>
+        <format>"8.2f"</format>
+        <font>"bold"</font>
+        <param_pin>1</param_pin>
+      </spinbox>
+      <label>
+        <text>"mm"</text>
+        <font>"bold"</font>
+      </label>
+    </hbox>
+    <button>
+      <halpin>"z-plus"</halpin>
+      <text>"↑ Alza Z"</text>
+      <bd>4</bd>
+      <font>"bold",10</font>
+    </button>
+    <button>
+      <halpin>"z-minus"</halpin>
+      <bd>4</bd>
+      <width>1</width>
+      <text>"↓ Abbassa Z"</text>
+      <font>"bold",10</font>
+      <bg>"#ff75b5"</bg>
+      <fg>"#000000"</fg>
+    </button>
+    <button>
+      <halpin>"clearall"</halpin>
+      <bd>3</bd>
+      <width>1</width>
+      <text>"Resetta"</text>
+      <font>"bold",10</font>
+    </button>
+  </vbox>
+</vbox>
+</pyvcp>
